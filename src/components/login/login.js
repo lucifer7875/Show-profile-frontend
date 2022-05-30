@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 const Login = ({ setLoginUser }) => {
 
-    const navigate = useNavigate()
+    const nav = useNavigate()
 
     const [user, setUser] = useState({
         email: "",
@@ -27,7 +27,7 @@ const Login = ({ setLoginUser }) => {
                 alert(res.data.message)
                 localStorage.setItem("user_values", JSON.stringify(res.data.user))
                 // setLoginUser(res.data.user)
-                navigate("/home")
+                nav("/home")
             })
 
     }
@@ -56,7 +56,7 @@ const Login = ({ setLoginUser }) => {
             <br></br>
             or
             <br></br>
-            <button onClick={() => navigate("/register")} >Register</button><br></br>(New User First Register)
+            <button onClick={() => nav("/register")} >Register</button><br></br>(New User First Register)
 
         </div>
     )

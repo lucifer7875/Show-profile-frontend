@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form'
 
 const Register = () => {
 
-    const navigate = useNavigate()
+    const nav = useNavigate()
 
     const [user, setUser] = useState({
         userName: "",
@@ -36,7 +36,7 @@ const Register = () => {
                     console.log(user);
                     localStorage.setItem("register_values", JSON.stringify(user))
 
-                    navigate("/")
+                    nav("/")
                 })
         } else {
             alert("incorrect input")
@@ -133,7 +133,7 @@ const Register = () => {
             <br />
             or
             <br />
-            <button className="btn btn-primary" onClick={() => navigate("/")}>Login</button>
+            <button className="btn btn-primary" onClick={() => nav("/")}>Login</button>
             <br />
             (User allready register)
 
