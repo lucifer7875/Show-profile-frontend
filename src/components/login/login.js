@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import "./login.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { connect } from 'react-redux';
 
-const Login = ({ setLoginUser }) => {
 
+
+const Login = (props) => {
+
+    const { setLoginUser } = props
+    console.log(props)
     const nav = useNavigate()
 
     const [user, setUser] = useState({
@@ -35,7 +41,11 @@ const Login = ({ setLoginUser }) => {
     return (
         <div className="Login">
             {console.log("User", user)}
-            <h1>Login</h1>
+            <br />
+
+            <h1> <i class="bi bi-box-arrow-in-right"></i></h1>
+
+
 
             <input
                 type="text"
@@ -62,4 +72,4 @@ const Login = ({ setLoginUser }) => {
     )
 }
 
-export default Login
+export default connect(state => { return state }, null)(Login)
