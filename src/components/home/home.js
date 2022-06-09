@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 
 const Home = (props) => {
-    console.log(props)
+    // console.log(props)
     const nav = useNavigate()
 
     return (
@@ -16,12 +16,12 @@ const Home = (props) => {
                 <Container>
 
                     <button className="btn btn-primary" onClick={() => nav("/")}>
-                        Logout<i class="bi bi-lock-fill"></i>
+                        Logout<i className="bi bi-lock-fill"></i>
                     </button>
 
-                    <button className="btn btn-info" onClick={() => nav("/profile")}>
+                    {/* <button className="btn btn-info" onClick={() => nav("/profile")}>
                         {props.user.last_name}  <i className="bi bi-person-square"></i>
-                    </button>
+                    </button> */}
 
                     <button className="btn btn-info" onClick={() => nav("/profile")}>
                         Profile  <i className="bi bi-person-square"></i>
@@ -31,7 +31,7 @@ const Home = (props) => {
             </Navbar>
             <br /><br /> <br /><br /><br /><br /><br /><br /><br />
 
-            <h1><i class="bi bi-emoji-smile-fill"></i></h1>
+            <h1><i className="bi bi-emoji-smile-fill"></i></h1>
             <h2>You are at Homepage.</h2>
         </div>
     )

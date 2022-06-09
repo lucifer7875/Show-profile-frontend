@@ -4,6 +4,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./profile.css";
 // import { Button } from 'react-native';
 import { useNavigate } from 'react-router-dom';
+import { connect } from "react-redux";
+import { updateuser } from "../actions";
 
 
 
@@ -27,16 +29,19 @@ class Profile extends React.Component {
     // execute the code
     componentDidMount() {
 
+
+        const { updateUser } = this.props
+
+        const { user } = this.props
+        this.setState({ items: user })
         const user_id = JSON.parse(localStorage.getItem("user_values"))._id
 
         fetch(`http://localhost:9002/profile/${user_id}`)
             .then((res) => res.json())
             .then((json) => {
                 console.log(json)
-                this.setState({
-                    items: json,
-                    DataisLoaded: true,
-                })
+                console.log(updateUser);
+                updateUser(user)
             })
 
             .catch((error) => console.log(error))
@@ -122,7 +127,7 @@ class Profile extends React.Component {
                     />
                 </div>
 
-
+                {/* <button onClick={Profile} >Profile</button> */}
                 <button className="btn btn-primary" onClick={() => this.props.navigate("/home")}>Back</button>
             </div>
         )
@@ -130,9 +135,15 @@ class Profile extends React.Component {
 }
 
 function WithNavigate(props) {
+
     let navigate = useNavigate();
     return <Profile {...props} navigate={navigate} />
+
 }
 
-
-export default WithNavigate
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateUser: (user) => dispatch(updateuser(user)),
+    }
+}
+export default connect(status => { return status }, mapDispatchToProps)(WithNavigate)
